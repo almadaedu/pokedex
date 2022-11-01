@@ -1,24 +1,21 @@
-//#region Imports
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../pages/Home'
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from '../pages/Welcome'
-//#endregion
-const Stack = createNativeStackNavigator();
+import Home from '../pages/Home'
 
-function Routes() {
+const Stack = createStackNavigator()
+
+const Routes = () => {
     return (
         <Stack.Navigator initialRouteName='Welcome'>
-
             <Stack.Screen
-                name="Welcome"
+                name='Welcome'
                 component={Welcome}
-                options={{ headerShown: false }}
-            />
+                options={{ headerShown: false }} />
             <Stack.Screen
-                name="Home"
+                name='Home'
                 component={Home}
-            />
-
+                options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }
