@@ -4,17 +4,8 @@ import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'
 import api from '../../services/api'
 import { Text } from 'react-native'
-
-type PokemonType = {
-  type: string
-}
-
-type Pokemon = {
-  name: string,
-  url: string,
-  id: string,
-  types: PokemonType[]
-}
+import Card, { Pokemon, PokemonType } from '../../components/Card'
+import { FlatList } from 'react-native-gesture-handler'
 
 type Request = {
   id: number,
@@ -61,7 +52,12 @@ const Home = () => {
   return (
 
     <S.Container>
-      {pokemons.map(item =><Text>{item.name}</Text>)}
+      <FlatList 
+      data={pokemons}
+      keyExtractor={pokemon => pokemon.id.toString()}
+      renderItem={({item: pokemon})=> (
+        <Card data={pokemon}/>
+      )}/>
     </S.Container>
   )
 
