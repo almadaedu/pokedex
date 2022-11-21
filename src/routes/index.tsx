@@ -2,8 +2,10 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from '../pages/Welcome'
 import Home from '../pages/Home'
+import { propsNavigationStack } from './Models'
 
-const Stack = createStackNavigator()
+
+const Stack = createStackNavigator<propsNavigationStack>()
 
 const Routes = () => {
     return (
@@ -14,8 +16,7 @@ const Routes = () => {
                 options={{ headerShown: false }} />
             <Stack.Screen
                 name='Home'
-                component={Home}
-                options={{ headerShown: false }} />
+                component={Home}/>
         </Stack.Navigator>
     )
 }
