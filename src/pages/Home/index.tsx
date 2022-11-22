@@ -6,6 +6,7 @@ import api from '../../services/api'
 import { Text } from 'react-native'
 import Card, { Pokemon, PokemonType } from '../../components/Card'
 import { FlatList } from 'react-native-gesture-handler'
+import FadeAnimation from '../../components/FadeAnimation'
 
 type Request = {
   id: number,
@@ -56,7 +57,9 @@ const Home = () => {
       data={pokemons}
       keyExtractor={pokemon => pokemon.id.toString()}
       renderItem={({item: pokemon})=> (
-        <Card data={pokemon}/>
+        <FadeAnimation>
+          <Card data={pokemon}/>
+        </FadeAnimation>
       )}/>
     </S.Container>
   )
