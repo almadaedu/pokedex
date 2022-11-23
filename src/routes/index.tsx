@@ -1,23 +1,11 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
-import Welcome from '../pages/Welcome'
-import Home from '../pages/Home'
-import { propsNavigationStack } from './Models'
-
-
-const Stack = createStackNavigator<propsNavigationStack>()
-
+import { AppRoutes } from './routes'
+import { NavigationContainer } from '@react-navigation/native'
 const Routes = () => {
     return (
-        <Stack.Navigator initialRouteName='Welcome'>
-            <Stack.Screen
-                name='Welcome'
-                component={Welcome}
-                options={{ headerShown: false }} />
-            <Stack.Screen
-                name='Home'
-                component={Home}/>
-        </Stack.Navigator>
+        <NavigationContainer>
+            <AppRoutes />
+        </NavigationContainer>
     )
 }
 
