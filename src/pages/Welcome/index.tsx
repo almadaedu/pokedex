@@ -4,8 +4,14 @@ import AnimatedLottieView from 'lottie-react-native'
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'
+import { Button } from '../../components/Button'
 const Welcome = () => {
-  const navigation = useNavigation<propStack>()
+  const {navigate} = useNavigation<propStack>()
+
+  function handleNavigation() {
+    navigate('Home')
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -16,9 +22,7 @@ const Welcome = () => {
           <AnimatedLottieView source={pokemonAnimation} autoPlay={true} resizeMode={'cover'} loop={true} style={{ width: 400, height: 350 }} />
       </S.Content>
       <S.Footer>
-        <S.LoginButton>
-          <S.ButtonText onPress={() =>navigation.navigate('Home')}>Entrar</S.ButtonText>
-        </S.LoginButton>
+        <Button title='Entrar' onPress={handleNavigation}/>
         <S.InfoText>Encontre aqui diversos tipos de pokémon</S.InfoText>
       </S.Footer>
     </S.Container>
