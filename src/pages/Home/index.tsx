@@ -13,8 +13,14 @@ type Request = {
 }
 
 const Home = () => {
-  const navigation = useNavigation<propStack>()
+  const {navigate} = useNavigation<propStack>()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
+
+  function handleNavigation(pokemonId: number) {
+    navigate('Information', {
+      pokemonId,
+    })
+  }
   
   useEffect(() => {
     async function getAllPokemons() {
@@ -62,7 +68,9 @@ const Home = () => {
       data={pokemons}
       keyExtractor={pokemon => pokemon.id.toString()}
       renderItem={({item: pokemon})=> (
-          <Card data={pokemon} onPress={() =>navigation.navigate('Information')}/>
+          <Card data={pokemon} onPress={() =>{
+            handleNavigation(pokemon.id)
+          }}/>
       )}/>
     </S.Container>
   )
