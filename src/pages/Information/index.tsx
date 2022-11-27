@@ -25,7 +25,6 @@ type Ability = {
 
 export type TypeName =
   | "bug"
-  | "black"
   | "dark"
   | "dragon"
   | "electric"
@@ -62,7 +61,7 @@ type PokemonProps = {
 const Information = () => {
   const Route = useRoute();
   const { pokemonId } = Route.params as RouteParams;
-  const { colors } = useTheme();
+  const { backgroundColors } = useTheme();
   const [pokemon, setPokemon] = useState({} as PokemonProps);
   const [load, setLoad] = useState(true);
 
@@ -79,7 +78,7 @@ const Information = () => {
 
         const currentType = types[0].type.name as TypeName;
 
-        const color = colors[currentType];
+        const color = backgroundColors[currentType];
 
         setPokemon({
           stats,
@@ -106,7 +105,7 @@ const Information = () => {
     <Fragment>
       {load ?
         <Fragment>
-          <Text style={{margin: 20}}>Carregando</Text>
+          
         </Fragment> :
         <ScrollView style={{ flex: 1 }}>
           <S.Header type={pokemon.types[0].type.name}>

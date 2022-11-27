@@ -17,12 +17,3 @@ export const Header = styled(ImageBackground)`
         background-color:${theme.backgroundColors.backgroundWelcome}
     `} 
 `;
-
-export const Title = styled(Text)`
-    ${({theme}) => css `
-        font-size: 32px;
-        line-height: 38px;
-        font-weight: bold;
-        color: ${theme.textColor.goldYellow};
-    `} 
-`;
