@@ -1,8 +1,5 @@
 import { View, ImageBackground, Text } from "react-native";
 import styled, {css} from "styled-components";
-import {Dimensions} from 'react-native';
-
-const windowWidth = Dimensions.get('window').width
 
 export const Container = styled(View)`
     ${({theme}) => css `
@@ -13,9 +10,10 @@ export const Container = styled(View)`
 
 export const Header = styled(ImageBackground)`
     ${({theme}) => css `
-        height: 220px;
-        width: ${windowWidth}px;
-        margin-left: -20px;
+        height: 150px;
+        width: 300px;
+        margin-left: 30px;
+        margin-bottom: -50px;
         background-color:${theme.backgroundColors.backgroundWelcome}
     `} 
 `;
