@@ -9,8 +9,8 @@ type TypeProps = {
 
 export const Header = styled(View)<TypeProps>`
     ${({theme, type}) => css`
-        background-color:${theme.colors[type]} ;
-        height: 340px;
+        background-color:${theme.backgroundColors[type]} ;
+        height: 330px;
         padding: 20px;
         flex-direction: row;
         align-items: center;
