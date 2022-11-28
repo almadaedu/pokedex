@@ -12,7 +12,7 @@ export const Header = styled(ImageBackground)`
     ${({theme}) => css `
         height: 150px;
         width: 300px;
-        margin-left: 30px;
+        margin-left: 23px;
         margin-bottom: -50px;
         background-color:${theme.backgroundColors.backgroundWelcome}
     `} 
