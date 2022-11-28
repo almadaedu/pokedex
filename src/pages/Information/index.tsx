@@ -6,6 +6,10 @@ import { useTheme } from "styled-components";
 import * as S from "./styles";
 import { Feather } from "@expo/vector-icons";
 import circle from "../../assets/img/circle.png";
+import FadeAnimation from "../../components/FadeAnimation";
+import dotsImage from '../../assets/img/dots.png'
+
+
 type RouteParams = {
   pokemonId: number;
 };
@@ -64,6 +68,7 @@ const Information = () => {
   const { backgroundColors } = useTheme();
   const [pokemon, setPokemon] = useState({} as PokemonProps);
   const [load, setLoad] = useState(true);
+  const { goBack } = useNavigation();
 
   useEffect(() => {
     async function getPokemonDetails() {
@@ -89,42 +94,61 @@ const Information = () => {
           color,
         });
 
-        setLoad(false)
-
+        setLoad(false);
       } catch (err) {
         Alert.alert("Erro");
       } finally {
-        setLoad(false)
+        setLoad(false);
       }
     }
 
     getPokemonDetails();
   }, [pokemonId]);
 
+  function handleGoBack() {
+    goBack();
+  }
+
   return (
     <Fragment>
-      {load ?
-        <Fragment>
-          
-        </Fragment> :
-        <ScrollView style={{ flex: 1 }}>
+      {load ? (
+        <Fragment></Fragment>
+      ) : (
+        <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
           <S.Header type={pokemon.types[0].type.name}>
-            <S.BackButton>
+            <S.BackButton onPress={handleGoBack}>
               <Feather name="chevron-left" size={24} color="#fff" />
             </S.BackButton>
+            <S.ContentImage>
+              <S.CircleImage source={circle} />
+              <FadeAnimation>
+                <S.PokemonImage
+                  source={{
+                    uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`,
+                  }}
+                />
+              </FadeAnimation>
+            </S.ContentImage>
 
-            {/* <S.ContentImage>
-              <S.CircleImage source={circle}/>
-              <S.PokemonImage source={{
-                uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`,
-              }}/>
-            </S.ContentImage> */}
+            <S.Content>
+                  <S.PokemonId>#{pokemon.id}</S.PokemonId>
+                  <S.PokemonName>{pokemon.name}</S.PokemonName>
+                  <S.PokemonTypeContainer>
+                    {pokemon.types.map(({type}) => 
+                    <S.PokemonType type={type.name} key={type.name}>
+                      <S.PokemonTypeText>{type.name}</S.PokemonTypeText>
+                    </S.PokemonType>)}
+                  </S.PokemonTypeContainer>
+            </S.Content>
+            <S.DotsImage source={dotsImage}/>
           </S.Header>
+
+          <S.Container>
+            <S.Title type={pokemon.types[0].type.name}>Base Stats</S.Title>
+          </S.Container>
         </ScrollView>
-
-      }
+      )}
     </Fragment>
-
   );
 };
 
