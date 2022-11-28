@@ -73,27 +73,27 @@ const Home = () => {
       {load ?
         <Fragment>
           <View>
-          <Text style={{margin: 20}}>Carregando</Text>
+            <Text style={{ margin: 20 }}>Carregando</Text>
           </View>
         </Fragment> :
-                  <S.Container>
-                  <FlatList
-                    ListHeaderComponent={
-                      <>
-                        <S.Header source={pokeballHeader}></S.Header>
-                        <SearchBar />
-                      </>
-                    }
-                    contentContainerStyle={{ padding: 20 }}
-                    data={pokemons}
-                    keyExtractor={pokemon => pokemon.id.toString()}
-                    renderItem={({ item: pokemon }) => (
-                      <Card data={pokemon} onPress={() => {
-                        handleNavigation(pokemon.id)
-                      }} />
-                    )} />
-                </S.Container>  
-    }
+        <S.Container>
+          <FlatList
+            ListHeaderComponent={
+              <>
+                <S.Header source={pokeballHeader}></S.Header>
+                <SearchBar />
+              </>
+            }
+            contentContainerStyle={{ padding: 20 }}
+            data={pokemons}
+            keyExtractor={pokemon => pokemon.id.toString()}
+            renderItem={({ item: pokemon }) => (
+              <Card data={pokemon} onPress={() => {
+                handleNavigation(pokemon.id)
+              }} />
+            )} />
+        </S.Container>
+      }
     </Fragment>
 
 

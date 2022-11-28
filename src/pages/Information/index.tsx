@@ -131,20 +131,44 @@ const Information = () => {
             </S.ContentImage>
 
             <S.Content>
-                  <S.PokemonId>#{pokemon.id}</S.PokemonId>
-                  <S.PokemonName>{pokemon.name}</S.PokemonName>
-                  <S.PokemonTypeContainer>
-                    {pokemon.types.map(({type}) => 
-                    <S.PokemonType type={type.name} key={type.name}>
-                      <S.PokemonTypeText>{type.name}</S.PokemonTypeText>
-                    </S.PokemonType>)}
-                  </S.PokemonTypeContainer>
+              <S.PokemonId>#{pokemon.id}</S.PokemonId>
+              <S.PokemonName>{pokemon.name}</S.PokemonName>
+              <S.PokemonTypeContainer>
+                {pokemon.types.map(({ type }) =>
+                  <S.PokemonType type={type.name} key={type.name}>
+                    <S.PokemonTypeText>{type.name}</S.PokemonTypeText>
+                  </S.PokemonType>)}
+              </S.PokemonTypeContainer>
             </S.Content>
-            <S.DotsImage source={dotsImage}/>
+            <S.DotsImage source={dotsImage} />
           </S.Header>
 
           <S.Container>
             <S.Title type={pokemon.types[0].type.name}>Base Stats</S.Title>
+            {pokemon.stats.map(attribute =>
+                <S.StatsBar key={attribute.stat.name}>
+                    <S.Attributes>{attribute.stat.name}:</S.Attributes>
+                    <S.AttributesValue>{attribute.base_stat}</S.AttributesValue>
+                    <S.BarContainer>
+                      <S.AttributesBar>
+                        <S.ProgressBar
+                        type={pokemon.types[0].type.name}
+                        progress={200}
+                        borderWidth={0}
+                        width={attribute.base_stat}
+                        color = {pokemon.color}
+                        />
+                      </S.AttributesBar>
+                    </S.BarContainer>
+                </S.StatsBar>
+
+            )}
+            <S.Title type={pokemon.types[0].type.name}>Abilities</S.Title>
+              {pokemon.abilities.map(currentAbility => 
+              <S.Ability>
+                {currentAbility.ability.name}
+              </S.Ability>
+                )}
           </S.Container>
         </ScrollView>
       )}
