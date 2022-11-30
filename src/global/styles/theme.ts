@@ -23,7 +23,7 @@ export default {
     backgroundColors: {
         background: '#FFF',
         backgroundWelcome: '#2e3552',
-        backgroundButton: '#f1b914',
+        backgroundButton: '#076873',
         bug: '#8BD674',
         dark: '#6F6E78',
         dragon: '#7383B9',

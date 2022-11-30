@@ -1,10 +1,10 @@
 import React from 'react'
-import pokemonAnimation from '../../global/Images/swablu.json'
-import AnimatedLottieView from 'lottie-react-native'
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'
 import { Button } from '../../components/Button'
+import Background from '../../assets/img/background.png'
+import Logo from '../../assets/img/logo.png'
 const Welcome = () => {
   const {navigate} = useNavigation<propStack>()
 
@@ -13,13 +13,11 @@ const Welcome = () => {
   }
 
   return (
-    <S.Container>
+    <S.Container source={Background} blurRadius={2}>
       <S.Header>
-        <S.UpperTitle>Boas vindas à</S.UpperTitle>
-        <S.Title>Pokédex</S.Title>
+        <S.Title source={Logo} />
       </S.Header>
       <S.Content>
-          <AnimatedLottieView source={pokemonAnimation} autoPlay={true} resizeMode={'cover'} loop={true} style={{ width: 400, height: 350 }} />
       </S.Content>
       <S.Footer>
         <Button title='Entrar' onPress={handleNavigation}/>

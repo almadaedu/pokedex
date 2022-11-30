@@ -1,33 +1,19 @@
-import { View,Text, TouchableOpacity } from "react-native";
+import { View,Text, TouchableOpacity, ImageBackground, Image, TextInput } from "react-native";
 import styled, {css} from "styled-components";
+import theme from "../../global/styles/theme";
 
-export const Container = styled(View)`
+export const Container = styled(ImageBackground)`
     ${({theme}) => css `
         flex: 1;
-        padding: 25px ;
-        background-color:${theme.backgroundColors.backgroundWelcome} ;
+        padding: 25px
     `} 
 `;
 
 export const Header = styled(View)`
-    height: 20%;
-    padding: 30px 0 ;
+    height: 25%;
+    padding: 30px 0;
 `;
 
-export const UpperTitle = styled(Text)`
-    ${({theme}) => css `
-        color: ${theme.textColor.rockWhite};
-        font-size: 18px ;
-    `} 
-`;
-
-export const Title = styled(Text)`
-    ${({theme}) => css `
-        font-size: 42px ;
-        font-weight: 700 ;
-        color: ${theme.textColor.goldYellow};
-    `} 
-`;
 export const Content = styled(View)`
    justify-content: center;
    align-self: center;
@@ -35,10 +21,23 @@ export const Content = styled(View)`
    height: 45%;
 `;
 
+export const Input = styled(TextInput)`
+    width: 200px;
+    height: 40px;
+    border-bottom: 4px;
+    background-color: blueviolet;
+`;
+
+export const Title = styled(Image)`
+    height: 100px;
+    width: 300px;
+    margin: 15px;
+`;
+
 export const Footer = styled(View)`
     justify-content: center;
     align-items: center;
-    height: 40%;
+    height: 30%;
 `;
 
 export const InfoText = styled(Text)`
