@@ -4,7 +4,8 @@
 
 ## 🤔 Sobre
 
-Esta aplicação tem como objetivo servir como uma pokédex, ou seja, informar a respeito de cada pokémon da primeira geração, isso inclui seus dados e tipo de treinamento.
+Esta aplicação tem como objetivo servir como uma pokédex, ou seja, informar a respeito de cada pokémon da primeira geração, isso inclui seus dados como habilidades e tipos de treinamento.
+Além de da funcionalidade de pesquisa, também é possível filtrar cada pokémon por ordem alfabética
 
 Layout baseado [nesse projeto](https://www.behance.net/gallery/95727849/Pokdex-App/modules/552909481)
 
@@ -31,6 +32,9 @@ Lottie - Lottie é uma biblioteca open-source de animações que permite manipul
 </p>
 <p>
 React Navigation - Biblioteca para navegação entre telas que inclui diversos tipos de disponibilidades. Atualmente a navegação utilizada foi a react navigation stack
+</p>
+<p>
+React Native Reanimated - Biblioteca que disponibiliza efeitos de animação para componentes da aplicação.
 </p>
 
 ---
