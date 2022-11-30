@@ -1,6 +1,4 @@
 import React from 'react'
-import pokemonAnimation from '../../global/Images/swablu.json'
-import AnimatedLottieView from 'lottie-react-native'
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'

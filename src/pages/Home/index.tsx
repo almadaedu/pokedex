@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, TouchableOpacity, Text } from 'react-native'
+import { Alert, View, Text } from 'react-native'
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'
@@ -7,6 +7,8 @@ import api from '../../services/api'
 import Card, { Pokemon, PokemonType } from '../../components/Card'
 import { FlatList, RefreshControl } from 'react-native-gesture-handler'
 import pokeballHeader from '../../assets/img/pokeball.png'
+import sortNameIcon from '../../assets/img/sort-name.png'
+import sortNumberIcon from '../../assets/img/sort-number.png'
 
 type Request = {
   id: number,
@@ -107,16 +109,17 @@ const Home = () => {
       <FlatList
         ListHeaderComponent={
           <>
-            <S.Header source={pokeballHeader}></S.Header>
+            <S.Header source={pokeballHeader} />
+
+            <S.SortNameContainer onPress={handleOrderClick}>
+              <S.SortName source={sortNameIcon} />
+            </S.SortNameContainer>
             <S.Search
               placeholder='Por qual pokémon está procurando?'
               selectionColor={'#747476'}
               onChangeText={(t) => setSearchPokemon(t)}
               value={searchPokemon}
             />
-            <TouchableOpacity onPress={handleOrderClick} style={{ backgroundColor: 'red', alignItems: 'center', height: 30, justifyContent: 'center' }}>
-              <Text>Filtrar</Text>
-            </TouchableOpacity>
           </>
         }
         contentContainerStyle={{ padding: 20 }}
