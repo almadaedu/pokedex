@@ -21,9 +21,10 @@ export default {
         water: '#4A90DA',
     },
     backgroundColors: {
-        background: '#FFF',
-        backgroundWelcome: '#2e3552',
-        backgroundButton: '#076873',
+        background: '#2e3552',
+        backgroundButton: '#e6af44',
+        backgroundWelcome: '#223fa3',
+        black: '#000',
         bug: '#8BD674',
         dark: '#6F6E78',
         dragon: '#7383B9',

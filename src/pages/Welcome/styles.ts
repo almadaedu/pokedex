@@ -1,48 +1,63 @@
-import { View,Text, TouchableOpacity, ImageBackground, Image, TextInput } from "react-native";
+import { View,Text, Image } from "react-native";
 import styled, {css} from "styled-components";
 import theme from "../../global/styles/theme";
 
-export const Container = styled(ImageBackground)`
+export const Container = styled(View)`
     ${({theme}) => css `
         flex: 1;
-        padding: 25px
+        background-color: ${theme.backgroundColors.backgroundWelcome};
     `} 
 `;
 
 export const Header = styled(View)`
-    height: 25%;
-    padding: 30px 0;
+    height: 30%;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const Content = styled(View)`
-   justify-content: center;
+   height: 43%;
    align-self: center;
-   padding: 10px 0;
-   height: 45%;
-`;
-
-export const Input = styled(TextInput)`
-    width: 200px;
-    height: 40px;
-    border-bottom: 4px;
-    background-color: blueviolet;
+   justify-content: center;
 `;
 
 export const Title = styled(Image)`
-    height: 100px;
     width: 300px;
-    margin: 15px;
+    height: 100px;
+    margin-top: 80px;
+`;
+
+export const Pokeball = styled(Image)`
+    width: 100px;
+    height: 100px;
+`;
+
+export const Lugia = styled(Image)`
+    width: 250px;
+    height: 250px;
+    margin-bottom: 60px;
+`;
+
+export const Cloud = styled(Image)`
+    position: absolute;
+    top: 30px;
+    left: 45px;
+    width: 270px;
+    height: 270px;
 `;
 
 export const Footer = styled(View)`
-    justify-content: center;
+    height: 27%;
     align-items: center;
-    height: 30%;
+    justify-content: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: ${theme.backgroundColors.black};
 `;
 
 export const InfoText = styled(Text)`
     ${({theme}) => css `
-        color: ${theme.textColor.rockWhite};
-        font-size: 16px ;
+    font-size: 16px ;
+    color: ${theme.textColor.rockWhite};
     `} 
 `;
