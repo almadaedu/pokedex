@@ -9,6 +9,8 @@ Além de da funcionalidade de pesquisa, também é possível filtrar cada pokém
 
 Layout baseado [nesse projeto](https://www.behance.net/gallery/95727849/Pokdex-App/modules/552909481)
 
+Layout do figma: [Figma](https://www.figma.com/file/THLxZSlOoUYMZrjFg0Kl1M/Pokédex?node-id=0%3A1&t=DfuilsGpso1aN6pf-0)
+
 ---
 
 
