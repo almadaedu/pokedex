@@ -105,7 +105,7 @@ export const Container = styled(View)`
     ${({ theme }) => css`
         flex: 1;
         padding: 20px;
-        background-color: ${theme.backgroundColors.background};
+        background-color: ${theme.backgroundColors.backgroundWhite};
         border-top-right-radius: 40px;
         border-top-left-radius: 40px;
         margin-top: -40px;

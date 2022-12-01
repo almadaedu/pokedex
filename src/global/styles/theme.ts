@@ -24,6 +24,7 @@ export default {
         background: '#2e3552',
         backgroundButton: '#e6af44',
         backgroundWelcome: '#223fa3',
+        backgroundWhite: '#fff',
         black: '#000',
         bug: '#8BD674',
         dark: '#6F6E78',
