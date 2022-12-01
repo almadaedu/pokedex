@@ -4,7 +4,7 @@ import styled, {css} from "styled-components";
 export const Container = styled(View)`
     ${({theme}) => css `
         flex: 1;
-        background-color:${theme.backgroundColors.backgroundWelcome} ;
+        background-color:${theme.backgroundColors.background} ;
     `} 
 `;
 
@@ -14,7 +14,7 @@ export const Header = styled(ImageBackground)`
         width: 300px;
         margin-left: 23px;
         margin-bottom: -50px;
-        background-color:${theme.backgroundColors.backgroundWelcome};
+        background-color:${theme.backgroundColors.background};
     `} 
 `;
 
