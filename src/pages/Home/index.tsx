@@ -5,25 +5,21 @@ import { useNavigation } from '@react-navigation/native'
 import { propStack } from '../../routes/Models'
 import api from '../../services/api'
 import Card, { Pokemon, PokemonType } from '../../components/Card'
-import { FlatList, RefreshControl } from 'react-native-gesture-handler'
+import { FlatList } from 'react-native-gesture-handler'
 import pokeballHeader from '../../assets/img/pokeball.png'
 import sortNameIcon from '../../assets/img/sort-name.png'
-import sortNumberIcon from '../../assets/img/sort-number.png'
 
 type Request = {
   id: number,
   types: PokemonType[]
 }
 
-type Sort = {
-  a: number,
-  b: number
-}
-
 const Home = () => {
   const { navigate } = useNavigation<propStack>()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [searchPokemon, setSearchPokemon] = useState('')
+  const [filteredPokemons, setfilteredPokemons] = useState<Pokemon[]>([])
+
 
 
   function handleNavigation(pokemonId: number) {
@@ -46,21 +42,10 @@ const Home = () => {
       }
     })
 
-    setPokemons(newList)
+    setfilteredPokemons(newList)
   }
 
-  useEffect(() => {
-    if (searchPokemon === '') {
-      setPokemons(pokemons)
-    } else {
-      setPokemons(
-        pokemons.filter((item) => {
-          return (item.name.toLowerCase().indexOf(searchPokemon.toLowerCase()) > -1)
-        })
-      )
-    }
 
-  }, [searchPokemon])
 
   useEffect(() => {
     async function getAllPokemons() {
@@ -84,6 +69,7 @@ const Home = () => {
 
         )
         setPokemons(payloadPokemons)
+        setfilteredPokemons(payloadPokemons)
 
       } catch (err) {
         Alert.alert("Erro")
@@ -102,7 +88,24 @@ const Home = () => {
     return { id, types }
   }
 
+  useEffect(() => {
+    if(searchPokemon !== '') {
+      setfilteredPokemons(
+        pokemons.filter((item) => {
+          return (item.name.toLowerCase().indexOf(searchPokemon.toLowerCase()) > -1)
+        })
+      )
+    }
 
+  }, [pokemons, searchPokemon])
+
+  useEffect(() => {
+    if (searchPokemon === '' && pokemons.length !== filteredPokemons.length ) {
+      setfilteredPokemons(pokemons);
+    } 
+
+  }, [filteredPokemons, pokemons, searchPokemon])
+  
 
   return (
     <S.Container>
@@ -110,7 +113,6 @@ const Home = () => {
         ListHeaderComponent={
           <>
             <S.Header source={pokeballHeader} />
-
             <S.SortNameContainer onPress={handleOrderClick}>
               <S.SortName source={sortNameIcon} />
             </S.SortNameContainer>
@@ -123,7 +125,7 @@ const Home = () => {
           </>
         }
         contentContainerStyle={{ padding: 20 }}
-        data={pokemons}
+        data={filteredPokemons}
         keyExtractor={pokemon => pokemon.id.toString()}
         renderItem={({ item: pokemon }) => (
           <Card data={pokemon} onPress={() => {
